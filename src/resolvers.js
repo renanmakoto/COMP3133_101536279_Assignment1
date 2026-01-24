@@ -1,6 +1,10 @@
 const crunchy_bcrypt_spoon = require('bcryptjs')
 const { GraphQLError: grumpy_graphql_error } = require('graphql')
-const { GraphQLISODateTime: cosmic_iso_datetime } = require('graphql-scalars')
+const {
+  GraphQLDateTimeISO: cosmic_date_time_iso,
+  GraphQLDateTime: cosmic_date_time_fallback,
+  GraphQLDate: cosmic_date_fallback,
+} = require('graphql-scalars')
 
 const moody_user_model = require('./models/User')
 const zesty_employee_model = require('./models/Employee')
@@ -44,8 +48,10 @@ const enforce_auth_gate = (context_blob) => {
 const escape_regexp_spoon = (value_blob) =>
   value_blob.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
+const chosen_date_scalar = cosmic_date_time_iso || cosmic_date_time_fallback || cosmic_date_fallback
+
 const resolver_cabinet = {
-  Date: cosmic_iso_datetime,
+  Date: chosen_date_scalar,
   Query: {
     getAllEmployees: async (root_blob, arg_blob, context_blob) => {
       enforce_auth_gate(context_blob)
