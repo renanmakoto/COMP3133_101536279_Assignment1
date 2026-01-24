@@ -47,20 +47,3 @@ POST — Get employee by ID (operationName: GetEmployeeById)
 POST — Update employee by ID (operationName: UpdateEmployeeById)
 
 POST — Delete employee by ID (operationName: DeleteEmployeeById)
-
-LOCAL TESTING INSTRUCTIONS
-
-Running locally with Node.js
-
-Backend:
-
-npm install
-npm run dev (starts http://localhost:4000)
-
-GraphQL endpoint:
-http://localhost:4000/graphql
-
-Notes
-- Use POST with Content-Type: application/json for all GraphQL operations.
-- date_of_joining must be ISO 8601, example: 2025-01-10T00:00:00.000Z
-- If Cloudinary is not configured, omit employee_photo or set it to null.
