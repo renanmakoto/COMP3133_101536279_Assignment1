@@ -8,25 +8,29 @@
   <a href="https://www.mongodb.com/brand-resources"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/2560px-MongoDB_Logo.svg.png" style="width: 204px; height: 64px;" /></a>
 </p>
 
-Stack
-Backend: Node.js, Express, Apollo Server (GraphQL), Mongoose, bcryptjs, jsonwebtoken, express-validator, validator, cloudinary, cors, dotenv
-Database: MongoDB Atlas
-Frontend: None (API-only; tested with Postman)
-Deployment: Vercel serverless API
-
 Live URLs and credentials
+
 Frontend login: N/A
+
 Backend base URL: https://comp-3133-101536279-assignment1.vercel.app/
+
 API base path for testing: https://comp-3133-101536279-assignment1.vercel.app/api/graphql
 
 Sample user credentials for testing:
+
 Email: renan@example.com
+
 Username: renan
+
 Password: Password123
 
 Live API endpoints
-POST — GraphQL endpoint (all operations) https://comp-3133-101536279-assignment1.vercel.app/api/graphql
-POST — GraphQL endpoint (rewrite) https://comp-3133-101536279-assignment1.vercel.app/graphql
+
+POST — GraphQL endpoint (all operations)
+https://comp-3133-101536279-assignment1.vercel.app/api/graphql
+
+POST — GraphQL endpoint (rewrite)
+https://comp-3133-101536279-assignment1.vercel.app/graphql
 
 POST — Signup (operationName: Signup)
 POST — Login (operationName: Login)
@@ -40,6 +44,7 @@ POST — Delete employee by ID (operationName: DeleteEmployeeById)
 LOCAL TESTING INSTRUCTIONS
 
 Running locally with Node.js
+
 Backend:
 
 npm install
