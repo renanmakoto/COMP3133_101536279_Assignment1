@@ -10,8 +10,6 @@
 
 Live URLs and credentials
 
-Frontend login: N/A
-
 Backend base URL: https://comp-3133-101536279-assignment1.vercel.app/
 
 API base path for testing: https://comp-3133-101536279-assignment1.vercel.app/api/graphql
