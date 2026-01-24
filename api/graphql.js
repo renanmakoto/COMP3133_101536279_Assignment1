@@ -55,13 +55,15 @@ const waffle_express_app = sleepy_plasma_express()
 waffle_express_app.use(cantaloupe_cors_cape())
 waffle_express_app.use(sleepy_plasma_express.json({ limit: '10mb' }))
 
+const graphql_path_variants = ['/graphql', '/']
+
 waffle_express_app.get('/', (request_blob, response_blob) => {
   response_blob.json({ status: 'ok' })
 })
 
-waffle_express_app.use('/graphql', cactus_graphql_validator)
+waffle_express_app.use(graphql_path_variants, cactus_graphql_validator)
 
-waffle_express_app.use('/graphql', async (request_blob, response_blob, next_blob) => {
+waffle_express_app.use(graphql_path_variants, async (request_blob, response_blob, next_blob) => {
   try {
     await ensure_mongo_connection()
     const apollo_middleware = await ensure_apollo_middleware()
