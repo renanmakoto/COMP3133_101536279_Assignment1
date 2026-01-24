@@ -2,6 +2,22 @@
 
 Backend API built with Node.js, Express, Apollo Server, GraphQL, and MongoDB.
 
+## Deployed API (Vercel)
+Base URL:
+- https://comp-3133-101536279-assignment1.vercel.app
+
+## Endpoints and Methods
+Production (Vercel):
+- POST https://comp-3133-101536279-assignment1.vercel.app/api/graphql
+- POST https://comp-3133-101536279-assignment1.vercel.app/graphql (rewrite to /api/graphql)
+- GET https://comp-3133-101536279-assignment1.vercel.app/ (status check)
+
+Local:
+- POST http://localhost:4000/graphql
+- GET http://localhost:4000/ (status check)
+
+All GraphQL operations use POST with JSON body.
+
 ## Requirements
 - Node.js 18+ (tested with Node 24)
 - MongoDB running locally or a connection string (Atlas also works)
@@ -26,7 +42,8 @@ CLOUDINARY_API_SECRET=
 ```
 
 - `AUTH_REQUIRED=true` enforces JWT auth on employee queries/mutations.
-- If Cloudinary is not configured, `employee_photo` uploads will return an error.
+- If Cloudinary is not configured, omit `employee_photo` or set it to `null`.
+- `date_of_joining` must be ISO 8601 with time zone, e.g. `2025-01-10T00:00:00.000Z`.
 
 ## Run
 ```bash
@@ -34,9 +51,26 @@ npm run dev
 # or
 npm start
 ```
-Open `http://localhost:4000/graphql` for the Apollo landing page.
 
-## GraphQL Operations
+## Request Format (Postman)
+Headers:
+- Content-Type: application/json
+- Authorization: Bearer <JWT_TOKEN> (only if AUTH_REQUIRED=true)
+
+Body shape:
+```json
+{
+  "operationName": "Signup",
+  "query": "mutation Signup($username: String!, $email: String!, $password: String!) { signup(username: $username, email: $email, password: $password) { success message user { id username email created_at } } }",
+  "variables": {
+    "username": "testuser",
+    "email": "testuser@example.com",
+    "password": "Password123"
+  }
+}
+```
+
+## GraphQL Operations (Assignment Requirements)
 Note: To trigger `express-validator` rules, use the same **operation names** shown below.
 
 ### 1) Signup
@@ -139,9 +173,9 @@ Variables:
     "gender": "Male",
     "designation": "Developer",
     "salary": 5200,
-    "date_of_joining": "2025-01-10",
+    "date_of_joining": "2025-01-10T00:00:00.000Z",
     "department": "Engineering",
-    "employee_photo": "https://example.com/photo.jpg"
+    "employee_photo": null
   }
 }
 ```
@@ -242,15 +276,8 @@ Variables:
 }
 ```
 
-## Auth Header (Optional)
-If `AUTH_REQUIRED=true`, include an `Authorization` header:
-```
-Authorization: Bearer <JWT_TOKEN>
-```
-
-## Cloudinary Upload
-`employee_photo` accepts a public URL or base64 data URI. The API uploads it to Cloudinary and stores the secure URL.
-
 ## Notes For Submission
+- Export the Postman collection (JSON).
+- Include screenshots for each API request/response and MongoDB collections.
 - Remove `node_modules` before creating the ZIP.
-- Keep a sample user’s login details for submission screenshots.
+- Provide the GitHub repo link, deployed URL, and sample user credentials.
