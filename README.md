@@ -33,12 +33,19 @@ POST — GraphQL endpoint (rewrite)
 https://comp-3133-101536279-assignment1.vercel.app/graphql
 
 POST — Signup (operationName: Signup)
+
 POST — Login (operationName: Login)
+
 POST — Get all employees (operationName: GetAllEmployees)
+
 POST — Search employees (operationName: SearchEmployees)
+
 POST — Create a new employee (operationName: AddEmployee)
+
 POST — Get employee by ID (operationName: GetEmployeeById)
+
 POST — Update employee by ID (operationName: UpdateEmployeeById)
+
 POST — Delete employee by ID (operationName: DeleteEmployeeById)
 
 LOCAL TESTING INSTRUCTIONS
