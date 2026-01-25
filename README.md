@@ -17,31 +17,44 @@ API base path for testing: https://comp-3133-101536279-assignment1.vercel.app/ap
 Sample user credentials for testing:
 
 Email: renan@example.com
-
 Username: renan
-
 Password: Password123
 
-Live API endpoints
+Live API endpoints (all are POST with Content-Type: application/json)
 
-POST — GraphQL endpoint (all operations)
-https://comp-3133-101536279-assignment1.vercel.app/api/graphql
+- GraphQL endpoint (all operations): https://comp-3133-101536279-assignment1.vercel.app/api/graphql
+- GraphQL endpoint (rewrite): https://comp-3133-101536279-assignment1.vercel.app/graphql
 
-POST — GraphQL endpoint (rewrite)
-https://comp-3133-101536279-assignment1.vercel.app/graphql
+Operations (operationName values)
+- Signup (operationName: Signup)
+- Login (operationName: Login)
+- Get all employees (operationName: GetAllEmployees)
+- Search employees (operationName: SearchEmployees)
+- Create a new employee (operationName: AddEmployee)
+- Get employee by ID (operationName: GetEmployeeById)
+- Update employee by ID (operationName: UpdateEmployeeById)
+- Delete employee by ID (operationName: DeleteEmployeeById)
 
-POST — Signup (operationName: Signup)
+Cloudinary setup (employee photos)
 
-POST — Login (operationName: Login)
+- Configure either `CLOUDINARY_URL` or the trio `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET` in your env (Vercel and local).
+- `employee_photo` accepts a public URL, data URI, or base64 string; it uploads to Cloudinary and stores the secure URL.
+- If you already pass a Cloudinary URL, it will be kept as-is.
+- Example env:
+  - CLOUDINARY_URL=cloudinary://<api_key>:<api_secret>@<cloud_name>
+  - or
+    - CLOUDINARY_CLOUD_NAME=your_cloud
+    - CLOUDINARY_API_KEY=your_key
+    - CLOUDINARY_API_SECRET=your_secret
 
-POST — Get all employees (operationName: GetAllEmployees)
+Local testing instructions
 
-POST — Search employees (operationName: SearchEmployees)
+Backend (Node.js):
+- npm install
+- npm run dev (starts http://localhost:4000)
+- GraphQL endpoint: http://localhost:4000/graphql
 
-POST — Create a new employee (operationName: AddEmployee)
-
-POST — Get employee by ID (operationName: GetEmployeeById)
-
-POST — Update employee by ID (operationName: UpdateEmployeeById)
-
-POST — Delete employee by ID (operationName: DeleteEmployeeById)
+Notes
+- All GraphQL requests use POST + JSON body (`operationName`, `query`, `variables`).
+- `date_of_joining` must be ISO 8601, example: `2025-01-10T00:00:00.000Z`.
+- If Cloudinary is not configured, sending `employee_photo` will return `CLOUDINARY_NOT_CONFIGURED`.
