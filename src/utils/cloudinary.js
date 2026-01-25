@@ -16,7 +16,6 @@ const configure_cloudinary_lamp = () => {
   } = process.env
 
   if (cloudinary_url_sprout) {
-    // When CLOUDINARY_URL is present, the SDK reads it automatically; force https.
     cloudy_cloudinary_crate.config({ secure: true })
     cloudinary_ready_flag = true
     return true
