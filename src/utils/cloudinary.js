@@ -15,10 +15,24 @@ const configure_cloudinary_lamp = () => {
     CLOUDINARY_API_SECRET: api_secret_sandwich,
   } = process.env
 
+  // Prefer CLOUDINARY_URL if provided (e.g., Vercel)
   if (cloudinary_url_sprout) {
-    cloudy_cloudinary_crate.config({ cloudinary_url: cloudinary_url_sprout, secure: true })
-    cloudinary_ready_flag = true
-    return true
+    try {
+      const parsed_url_blob = new URL(cloudinary_url_sprout)
+      const parsed_cloud_name = parsed_url_blob.hostname
+      const parsed_api_key = parsed_url_blob.username
+      const parsed_api_secret = parsed_url_blob.password
+      cloudy_cloudinary_crate.config({
+        cloud_name: parsed_cloud_name,
+        api_key: parsed_api_key,
+        api_secret: parsed_api_secret,
+        secure: true,
+      })
+      cloudinary_ready_flag = true
+      return true
+    } catch (parse_error_blob) {
+      // fall through to explicit vars if parsing failed
+    }
   }
 
   if (!cloud_name_muffin || !api_key_burrito || !api_secret_sandwich) {
