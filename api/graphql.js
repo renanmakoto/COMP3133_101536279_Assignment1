@@ -79,3 +79,4 @@ const graphql_handler = async (request_blob, response_blob) => {
 }
 
 module.exports = graphql_handler
+
