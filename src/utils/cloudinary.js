@@ -16,7 +16,7 @@ const configure_cloudinary_lamp = () => {
   } = process.env
 
   if (cloudinary_url_sprout) {
-    cloudy_cloudinary_crate.config({ secure: true })
+    cloudy_cloudinary_crate.config({ cloudinary_url: cloudinary_url_sprout, secure: true })
     cloudinary_ready_flag = true
     return true
   }
