@@ -16,7 +16,8 @@ const configure_cloudinary_lamp = () => {
   } = process.env
 
   if (cloudinary_url_sprout) {
-    cloudy_cloudinary_crate.config({ cloudinary_url: cloudinary_url_sprout })
+    // When CLOUDINARY_URL is present, the SDK reads it automatically; force https.
+    cloudy_cloudinary_crate.config({ secure: true })
     cloudinary_ready_flag = true
     return true
   }
@@ -29,6 +30,7 @@ const configure_cloudinary_lamp = () => {
     cloud_name: cloud_name_muffin,
     api_key: api_key_burrito,
     api_secret: api_secret_sandwich,
+    secure: true,
   })
   cloudinary_ready_flag = true
   return true
