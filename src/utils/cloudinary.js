@@ -15,7 +15,6 @@ const configure_cloudinary_lamp = () => {
     CLOUDINARY_API_SECRET: api_secret_sandwich,
   } = process.env
 
-  // Prefer CLOUDINARY_URL if provided (e.g., Vercel)
   if (cloudinary_url_sprout) {
     try {
       const parsed_url_blob = new URL(cloudinary_url_sprout)
