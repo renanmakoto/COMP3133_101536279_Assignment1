@@ -35,17 +35,7 @@ Operations (operationName values)
 - Update employee by ID (operationName: UpdateEmployeeById)
 - Delete employee by ID (operationName: DeleteEmployeeById)
 
-Cloudinary setup (employee photos)
 
-- Configure either `CLOUDINARY_URL` or the trio `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET` in your env (Vercel and local).
-- `employee_photo` accepts a public URL, data URI, or base64 string; it uploads to Cloudinary and stores the secure URL.
-- If you already pass a Cloudinary URL, it will be kept as-is.
-- Example env:
-  - CLOUDINARY_URL=cloudinary://<api_key>:<api_secret>@<cloud_name>
-  - or
-    - CLOUDINARY_CLOUD_NAME=your_cloud
-    - CLOUDINARY_API_KEY=your_key
-    - CLOUDINARY_API_SECRET=your_secret
 
 Proof of Cloudinary usage
 - Postman upload and API response showing Cloudinary URL stored for `employee_photo`:
@@ -55,15 +45,3 @@ Proof of Cloudinary usage
 - Mongo shell showing Cloudinary URL persisted in the `employees` collection:
 
   ![Mongo shell with Cloudinary URL](Cloudinary_Mongoshell.png)
-
-Local testing instructions
-
-Backend (Node.js):
-- npm install
-- npm run dev (starts http://localhost:4000)
-- GraphQL endpoint: http://localhost:4000/graphql
-
-Notes
-- All GraphQL requests use POST + JSON body (`operationName`, `query`, `variables`).
-- `date_of_joining` must be ISO 8601, example: `2025-01-10T00:00:00.000Z`.
-- If Cloudinary is not configured, sending `employee_photo` will return `CLOUDINARY_NOT_CONFIGURED`.
