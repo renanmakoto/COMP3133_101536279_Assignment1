@@ -47,6 +47,15 @@ Cloudinary setup (employee photos)
     - CLOUDINARY_API_KEY=your_key
     - CLOUDINARY_API_SECRET=your_secret
 
+Proof of Cloudinary usage
+- Postman upload and API response showing Cloudinary URL stored for `employee_photo`:
+
+  ![Postman Cloudinary upload](Cloudinary_postman.png)
+
+- Mongo shell showing Cloudinary URL persisted in the `employees` collection:
+
+  ![Mongo shell with Cloudinary URL](Cloudinary_Mongoshell.png)
+
 Local testing instructions
 
 Backend (Node.js):
